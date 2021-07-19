@@ -41,6 +41,10 @@ app.get('/CrewLeaders', function(req, res){
 app.get('/Employees', function(req, res){
         res.render('Employees');                    
     });  
+
+app.get('/PropertyOwned', function(req, res){
+        res.render('PropertyOwned');                    
+    });  
 /*
     LISTENER
 */
