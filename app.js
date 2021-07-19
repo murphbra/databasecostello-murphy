@@ -18,7 +18,7 @@ app.set('view engine', '.hbs');
 /*
     ROUTES
 */
-app.get('/', function(req, res){
+app.get('/index', function(req, res){
         res.render('index');                    
     });                                        
 /*
