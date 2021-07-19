@@ -1,0 +1,19 @@
+{
+  "name": "databasecostello-murphy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/murphbra/databasecostello-murphy.git"
+  },
+  "author": "Brayden Murphy, Joseph Costello",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/murphbra/databasecostello-murphy/issues"
+  },
+  "homepage": "https://github.com/murphbra/databasecostello-murphy#readme"
+}
