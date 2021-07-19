@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/murphbra/databasecostello-murphy/issues"
   },
-  "homepage": "https://github.com/murphbra/databasecostello-murphy#readme"
+  "homepage": "https://github.com/murphbra/databasecostello-murphy#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "forever": "^4.0.1"
+  }
 }
