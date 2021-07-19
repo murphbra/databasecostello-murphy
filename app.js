@@ -20,7 +20,11 @@ app.set('view engine', '.hbs');
 */
 app.get('/index', function(req, res){
         res.render('index');                    
-    });                                        
+    });      
+
+    app.get('/properties', function(req, res){
+        res.render('properties');                    
+    });  
 /*
     LISTENER
 */
