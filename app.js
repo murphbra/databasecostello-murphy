@@ -4,15 +4,16 @@
     SETUP
 */
 var express = require('express');   
-var app     = express();            
-var db = require('./database/db-connector')
-PORT        = 5461;                 
-var exphbs = require('express-handlebars');     
+var app     = express();          
+var db = require('./database/db-connector');
+var exphbs = require('express-handlebars');
+PORT        = 5461;
+
 app.engine('.hbs', exphbs({                     
     extname: ".hbs"
 }));
+
 app.set('view engine', '.hbs'); 
-app.set('port', 5461);
 
 /*
     ROUTES
