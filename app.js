@@ -17,11 +17,9 @@ app.set('view engine', '.hbs');
 */
 app.get('/', function(req, res)                 // This is the basic syntax for what is called a 'route'
     {
-        app.get('/', function(req, res)
-    {
         res.render('index');                    // Note the call to render() and not send(). Using render() ensures the templating engine
     });                                         // will process this file, before sending the finished HTML to the client.
-    });                                         // requesting the web site.
+                                         
 
 /*
     LISTENER
