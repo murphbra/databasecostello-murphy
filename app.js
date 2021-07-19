@@ -22,8 +22,24 @@ app.get('/index', function(req, res){
         res.render('index');                    
     });      
 
-    app.get('/properties', function(req, res){
+app.get('/properties', function(req, res){
         res.render('properties');                    
+    });  
+
+app.get('/CompletedLandscapingSessions', function(req, res){
+        res.render('CompletedLandscapingSessions');                    
+    });  
+
+app.get('/PropertyOwners', function(req, res){
+        res.render('PropertyOwners');                    
+    });  
+
+app.get('/CrewLeaders', function(req, res){
+        res.render('CrewLeaders');                    
+    });  
+
+app.get('/Employees', function(req, res){
+        res.render('Employees');                    
     });  
 /*
     LISTENER
