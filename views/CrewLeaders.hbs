@@ -7,7 +7,27 @@
     <title>Document</title>
 </head>
 <body>
-    Crew Leaders Page
+    
     <a href="/index">Home Page</a>
+    <br/>
+    Crew Leaders Page
+    <form action="" method="">
+        <fieldset>
+            <legend>Add a new Crew Leader</legend>
+            <label>
+                First Name:
+                <input type="text"/>
+            </label>
+            <label>
+                Last Name:
+                <input type="text"/>
+            </label>
+            <label>
+                Phone Number:
+                <input type="number" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
+            </label>
+            <input type="submit" value="Submit" />
+        </fieldset>
+    </form>
 </body>
 </html>
