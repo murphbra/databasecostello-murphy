@@ -13,18 +13,22 @@
     Properties Page
     <br>
     <table style="border:solid">
-        <tr>
-            <th>Current Properties on file:</th>
-        </tr>
-        <tr>
-            <td>address 1</td>
-            <td>
-                <button>Update</button>
-            </td>
-            <td>
-                <button>Delete</button>
-            </td>
-        </tr>
+        <caption>Properties on file</caption>
+        <thead>
+            <th>Address:</th>
+        </thead>
+
+        <tbody>
+
+            {{#each properties}}
+            <tr>
+                <td>{{this.propAddress}}</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+            {{/each}}
+
+        </tbody>
     </table>
     <br>
     <form action="" method="">

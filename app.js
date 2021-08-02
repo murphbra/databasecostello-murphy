@@ -18,8 +18,14 @@ app.set('view engine', '.hbs');
 /*
     ROUTES
 */
-app.get('/index', function(req, res){
-        res.render('index');                    
+app.get('/index', function(req, res)
+    {
+        let query1 = "SELECT * FROM properties;"; 
+
+        db.pool.query(query1, function(error, rows, fields){
+
+            res.render('index', {properties: rows}); 
+        })                  
     });      
 
 app.get('/properties', function(req, res){
