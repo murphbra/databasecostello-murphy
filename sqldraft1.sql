@@ -52,5 +52,8 @@ DELETE from employeeID WHERE employeeID = :employeeIDInput;
 --delete property owned, M:M relationship
 DELETE from PropertyOwned WHERE propertyId = :propertyIDInput AND ownerID = :ownerIDInput;
 
+--select completed session from propertyId
+SELECT sessionID, propertyID, date FROM CompletedLandscapingSession WHERE sessionID = [:propertyIDSearch];
+
 
 
