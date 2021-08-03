@@ -15,52 +15,30 @@
     <br>
     <br>
 	<table style="border:solid">
-        <caption>Current Employees on file:</caption>
-        <tr>
-            <th>
-                Employee ID
-            </th>
-            <th>
-                First Name
-            </th>
-            <th>
-                Last Name
-            </th>
-            <th>
-                Phone Number
-            </th>
-            <th>
-                Leader ID
-            </th>
-
-        </tr>
-        <tr>
-            <td>
-                1
-            </td>
-            <td>
-                John
-            </td>
-            <td>
-                Doe
-            </td>
-            <td>
-                999 999 999
-            </td>
-            <td>
-                4
-            </td>
-            <td>
-                <button>
-                    Update
-                </button>
-            </td>
-            <td>
-                <button>
-                    Delete
-                </button>
-            </td>
-        </tr>
+        <caption>
+            Property Owners On File
+        </caption>
+        <thead>
+            <th>Employee ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Leader ID</th>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.employeeID}}</td>
+                <td>{{this.fname}}</td>
+                <td>{{this.lname}}</td>
+                <td>{{this.phoneNumber}}</td>
+                <td>{{this.leaderID}}</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+            {{/each}}
+        </tbody>
+        
     </table>
     <br>
     <form action="">

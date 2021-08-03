@@ -55,7 +55,12 @@ app.get('/CrewLeaders', function(req, res){
     });  
 
 app.get('/Employees', function(req, res){
-        res.render('Employees');                    
+    let query1 = "SELECT * FROM Employees;"; 
+
+    db.pool.query(query1, function(error, rows, fields){
+
+        res.render('Employees', {data: rows}); 
+    })                           
     });  
 
 app.get('/PropertyOwned', function(req, res){
