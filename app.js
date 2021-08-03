@@ -20,16 +20,16 @@ app.set('view engine', '.hbs');
 */
 app.get('/index', function(req, res)
     {
-        let query1 = "SELECT * FROM properties;"; 
-
-        db.pool.query(query1, function(error, rows, fields){
-
-            res.render('index', {properties: rows}); 
-        })                  
+        res.render('index')                
     });      
 
 app.get('/properties', function(req, res){
-        res.render('properties');                    
+    let query1 = "SELECT * FROM properties;"; 
+
+        db.pool.query(query1, function(error, rows, fields){
+
+            res.render('properties', {properties: rows}); 
+        })                        
     });  
 
 app.get('/CompletedLandscapingSessions', function(req, res){
