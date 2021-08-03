@@ -28,7 +28,7 @@ app.get('/properties', function(req, res){
 
         db.pool.query(query1, function(error, rows, fields){
 
-            res.render('properties', {properties: rows}); 
+            res.render('properties', {data: rows}); 
         })                        
     });  
 
