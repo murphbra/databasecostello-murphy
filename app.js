@@ -51,7 +51,7 @@ app.get('/PropertyOwners', function(req, res){
     });  
 
 app.get('/CrewLeaders', function(req, res){
-    let query1 = "SELECT * FROM Properties;"; 
+    let query1 = "SELECT * FROM CrewLeaders;"; 
 
     db.pool.query(query1, function(error, rows, fields){
 
@@ -60,7 +60,12 @@ app.get('/CrewLeaders', function(req, res){
     });  
 
 app.get('/Employees', function(req, res){
-        res.render('Employees');                    
+    let query1 = "SELECT * FROM Employees;"; 
+
+    db.pool.query(query1, function(error, rows, fields){
+
+        res.render('Employees', {data: rows}); 
+    })                        
     });  
 
 app.get('/PropertyOwned', function(req, res){
