@@ -51,16 +51,16 @@ app.get('/PropertyOwners', function(req, res){
     });  
 
 app.get('/CrewLeaders', function(req, res){
-        res.render('CrewLeaders');                    
-    });  
-
-app.get('/Employees', function(req, res){
-    let query1 = "SELECT * FROM Employees;"; 
+    let query1 = "SELECT * FROM Properties;"; 
 
     db.pool.query(query1, function(error, rows, fields){
 
-        res.render('Employees', {data: rows}); 
-    })                           
+        res.render('CrewLeaders', {data: rows}); 
+    })                          
+    });  
+
+app.get('/Employees', function(req, res){
+        res.render('Employees');                    
     });  
 
 app.get('/PropertyOwned', function(req, res){
