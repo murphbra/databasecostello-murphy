@@ -33,7 +33,12 @@ app.get('/properties', function(req, res){
     });  
 
 app.get('/CompletedLandscapingSessions', function(req, res){
-        res.render('CompletedLandscapingSessions');                    
+    let query1 = "SELECT * FROM CompletedLandscapingSessions;"; 
+
+    db.pool.query(query1, function(error, rows, fields){
+
+        res.render('CompletedLandscapingSessions', {data: rows}); 
+    })                        
     });  
 
 app.get('/PropertyOwners', function(req, res){

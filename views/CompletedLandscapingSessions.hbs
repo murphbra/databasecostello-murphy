@@ -15,39 +15,26 @@
     <br>
     <br>
     <table style="border:solid">
-        <tr>
-            <caption>Completed Landscaping Sessions</caption>
-            <th>
-                Session ID
-            </th>
-            <th>
-                Property ID
-            </th>
-            <th>
-                Date
-            </th>
-        </tr>
-        <tr>
-            <td>
-                1
-            </td>
-            <td>
-                1
-            </td>
-            <td>
-                2020-04-01
-            </td>
-            <td>
-                <button>
-                    Update
-                </button>
-            </td>
-            <td>
-                <button>
-                    Delete
-                </button>
-            </td>
-        </tr>
+        <caption>
+            Completed Landscaping Sessions on file
+        </caption>
+        <thead>
+            <th>Session ID</th>
+            <th>Session Date</th>
+            <th>Property ID</th>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.sessionID}}</td>
+                <td>{{this.sessionDate}}</td>
+                <td>{{this.propertyID}}</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+            {{/each}}
+        </tbody>
+        
     </table>
     <br>
 
