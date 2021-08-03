@@ -15,21 +15,24 @@
     <br>
     <br>
     <table style="border:solid">
-        <caption>Properties and Owners</caption>
-        <tr>
-            <th>OwnerID</th>
-            <th>PropertyID</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>
-                <button>Update</button>
-            </td>
-            <td>
-                <button>Delete</button>
-            </td>
-        </tr>
+        <caption>
+            Properties Owned On File
+        </caption>
+        <thead>
+            <th>Property ID</th>
+            <th>Owner ID</th>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.propertyID}}</td>
+                <td>{{this.ownerID}}</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+            {{/each}}
+        </tbody>
+        
     </table>
 </body>
 </html>

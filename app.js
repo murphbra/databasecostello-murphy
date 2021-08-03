@@ -64,7 +64,12 @@ app.get('/Employees', function(req, res){
     });  
 
 app.get('/PropertyOwned', function(req, res){
-        res.render('PropertyOwned');                    
+    let query1 = "SELECT * FROM PropertyOwned;"; 
+
+    db.pool.query(query1, function(error, rows, fields){
+
+        res.render('PropertyOwned', {data: rows}); 
+    })                       
     });  
 /*
     LISTENER
