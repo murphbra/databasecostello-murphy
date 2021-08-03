@@ -42,7 +42,12 @@ app.get('/CompletedLandscapingSessions', function(req, res){
     });  
 
 app.get('/PropertyOwners', function(req, res){
-        res.render('PropertyOwners');                    
+    let query1 = "SELECT * FROM PropertyOwners;"; 
+
+    db.pool.query(query1, function(error, rows, fields){
+
+        res.render('PropertyOwners', {data: rows}); 
+    })                    
     });  
 
 app.get('/CrewLeaders', function(req, res){

@@ -14,23 +14,28 @@
     <br>
     <br>
     <table style="border:solid">
-        <caption>Current Property Owners on file:</caption>
-        <tr>
+        <caption>
+            Property Owners On File
+        </caption>
+        <thead>
+            <th>Owner ID</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
-        </tr>
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>johndoe@yahoo.com</td>
-            <td>
-                <button>Update</button>
-            </td>
-            <td>
-                <button>Delete</button>
-            </td>
-        </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.ownerID}}</td>
+                <td>{{this.fname}}</td>
+                <td>{{this.lname}}</td>
+                <td>{{this.email}}</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+            {{/each}}
+        </tbody>
+        
     </table>
     <br>
     <form action="" method="">
