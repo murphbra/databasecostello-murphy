@@ -24,7 +24,7 @@ app.get('/index', function(req, res)
     });      
 
 app.get('/properties', function(req, res){
-    let query1 = "SELECT * FROM properties;"; 
+    let query1 = "SELECT * FROM Properties;"; 
 
         db.pool.query(query1, function(error, rows, fields){
 
