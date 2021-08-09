@@ -138,12 +138,9 @@ app.get('/PropertyOwned', function(req, res){
     })   
     
 app.get('/propertiesUpdate', function(req, res){
-    let query1 = "SELECT * FROM CrewLeaders;"; 
     
-        db.pool.query(query1, function(error, rows, fields){
-    
-            res.render('propertiesUpdate', {data: rows}); 
-        })                          
+            res.render('propertiesUpdate');
+                                 
         });  
 
     });  
