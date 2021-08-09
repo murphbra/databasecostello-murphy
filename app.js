@@ -57,6 +57,20 @@ app.get('/CompletedLandscapingSessions', function(req, res){
     })                        
     });  
 
+app.post('/CompletedLandscapingSessions', function(req, res){
+    var mysql = req.app.get('mysql');
+    var sql = "INSERT INTO CompletedLandscapingSessions (sessionDate, propertyID) VALUES (?,?)";
+    var inserts = [req.body.sessionDate, req.body.propertyID];
+    sql = db.pool.query (sql, inserts, function(error, results, fields){
+        if(error){
+            res.write(JSON.stringify(error));
+            res.end();
+        }else{
+            res.redirect('CompletedLandscapingSessions');
+        }
+    })
+})
+
 app.get('/PropertyOwners', function(req, res){
     let query1 = "SELECT * FROM PropertyOwners;"; 
 

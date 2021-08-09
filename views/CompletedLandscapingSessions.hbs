@@ -47,19 +47,22 @@
     </table>
     <br>
 
-        <form action="">
+        <form id="addSession" action="/CompletedLandscapingSessions" method="post">
             <fieldset> 
                 <legend>Add new Completed Landscaping Session</legend>
-            <label for="sessionid">Session ID:</label><br>
-            <input type="number" id="sessionid" name="sessionid"><br>
-            <label for="propid">Property ID:</label><br>
-            <input type="number" id="propid" name="propid"><br><br>
-            <label for="date">Date:</label><br>
-            <input type="date" id="date" name="date">
+                Date: <input type="date" name="sessionDate"><br>
+
+                Property: <select name="propertyID">
+                    {{#each data}}
+                    <option value="{{this.propertyID}}">{{this.propAddress}}</option>
+                    {{/each}}
+                </select><br>
 
             <input type="submit" value="Submit">
+
             </fieldset>
         </form>
+
     <br>
     <form action ="">
         <fieldset>
