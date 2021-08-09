@@ -20,8 +20,8 @@ app.set('view engine', '.hbs');
 /*
     FUNCTIONS
 */
-function getProperties (res, db, context, complete){
-    db.pool.query("SELECT propertyID, propAddress FROM Properties;", function(error, results, fields){
+function getProperties (res, mysql, context, complete){
+    mysql.pool.query("SELECT propertyID, propAddress FROM Properties;", function(error, results, fields){
         if(error){
             res.write(JSON.stringify(error));
             res.end();
@@ -31,8 +31,8 @@ function getProperties (res, db, context, complete){
     });
 }
 
-function getLandscapingSessions (res, db, context, complete){
-    db.pool.query("SELECT * FROM CompletedLandscapingSessions;", function(error, results, fields){
+function getLandscapingSessions (res, mysql, context, complete){
+    mysql.pool.query("SELECT * FROM CompletedLandscapingSessions;", function(error, results, fields){
         if(error){
             res.write(JSON.stringify(error));
             res.end();
@@ -79,13 +79,12 @@ app.get('/CompletedLandscapingSessions', function(req, res){
     var mysql = req.app.get('mysql');
     getLandscapingSessions(res, mysql, context, complete);
     getProperties(res, mysql, context, complete);
-    res.render('/CompletedLandscapingSessions', context);
-    //function complete(){
-        //callbackCount++;
-        //if(callbackCount >= 2){
-            //res.render('CompletedLandscapingSessions', context); 
-        //}
-    //}      
+    function complete(){
+        callbackCount++;
+        if(callbackCount >= 2){
+            res.render('CompletedLandscapingSessions', context); 
+        }
+    }      
 });  
 /*
 app.post('/CompletedLandscapingSessions', function(req, res){
