@@ -26,18 +26,18 @@ function getProperties (res, context, complete){
             res.write(JSON.stringify(error));
             res.end();
         }
-        context.properties = results
+        context.properties = results;
         complete();
     });
 }
 
 function getLandscapingSessions (res, context, complete){
-    db.pool.query("SELECT * FROM CompletedLandscapingSessions;", function(error, results, fields){
+    db.pool.query("SELECT sessionID, sessionDate, propertyID FROM CompletedLandscapingSessions;", function(error, results, fields){
         if(error){
             res.write(JSON.stringify(error));
             res.end();
         }
-        context.sessions = results
+        context.sessions = results;
         complete();
     });
 }
