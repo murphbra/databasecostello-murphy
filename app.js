@@ -138,7 +138,7 @@ app.get('/PropertyOwned', function(req, res){
     })   
 });
     
-app.get('/propertiesUpdate', function(req, res){
+app.get('/propertiesUpdate/:propertyID', function(req, res){
     
             res.render('propertiesUpdate');
     });  
