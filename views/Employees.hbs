@@ -28,20 +28,19 @@
             Employee On File
         </caption>
         <thead>
-            <th>Employee ID</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Phone Number</th>
-            <th>Leader ID</th>
+            <th>Crew Leader</th>
         </thead>
         <tbody>
-            {{#each data}}
+            {{#each employee}}
             <tr>
                 <td>{{this.employeeID}}</td>
                 <td>{{this.fname}}</td>
                 <td>{{this.lname}}</td>
                 <td>{{this.phoneNumber}}</td>
-                <td>{{this.leaderID}}</td>
+                <td>{{this.leaderfirst}} {{this.leaderlast}}}}</td>
                 <td><button>Update</button></td>
                 <td><button>Delete</button></td>
             </tr>
@@ -50,6 +49,31 @@
         
     </table>
     <br>
+    <form id="addemployee" action="/Employees" method="post">
+            <fieldset>
+                <legend>Add a new Employee</legend>
+                <label>
+                    First Name:
+                    <input type="text" name="fname">
+                </label>
+                <label>
+                    Last Name:
+                    <input type="text" name="lname">
+                </label>
+                <label>
+                    Phone Number:
+                    <input type="number" name="phoneNumber" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
+                </label>
+
+                Crew Leader: <select name="leaderID">
+                        {{#each CrewLeaders}}
+                        <option value="{{this.leaderID}}">{{this.fname}} {{this.lname}}</option>
+                        {{/each}}
+                    </select><br>
+                <input type="submit" value="Submit" />
+            </fieldset>
+        </form>
+
     <form action="">
         <fieldset> 
             <legend>Add new employee</legend>
