@@ -20,8 +20,8 @@ app.set('view engine', '.hbs');
 /*
     FUNCTIONS
 */
-function getProperties (res, mysql, context, complete){
-    mysql.pool.query("SELECT propertyID, propAddress FROM Properties;", function(error, results, fields){
+function getProperties (res, context, complete){
+    db.pool.query("SELECT propertyID, propAddress FROM Properties;", function(error, results, fields){
         if(error){
             res.write(JSON.stringify(error));
             res.end();
@@ -31,8 +31,8 @@ function getProperties (res, mysql, context, complete){
     });
 }
 
-function getLandscapingSessions (res, mysql, context, complete){
-    mysql.pool.query("SELECT * FROM CompletedLandscapingSessions;", function(error, results, fields){
+function getLandscapingSessions (res, context, complete){
+    db.pool.query("SELECT * FROM CompletedLandscapingSessions;", function(error, results, fields){
         if(error){
             res.write(JSON.stringify(error));
             res.end();
@@ -76,9 +76,9 @@ app.post('/properties', function(req, res){
 app.get('/CompletedLandscapingSessions', function(req, res){
     //var callbackCount = 0;
     var context = {};
-    var mysql = req.app.get('db');
-    getLandscapingSessions(res, mysql, context, complete);
-    getProperties(res, mysql, context, complete);
+    //var mysql = req.app.get('db');
+    getLandscapingSessions(res, context, complete);
+    getProperties(res, context, complete);
     function complete(){
         callbackCount++;
         if(callbackCount >= 2){
