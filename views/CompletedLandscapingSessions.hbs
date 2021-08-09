@@ -28,16 +28,14 @@
             Completed Landscaping Sessions on file
         </caption>
         <thead>
-            <th>Session ID</th>
             <th>Session Date</th>
-            <th>Property ID</th>
+            <th>Property Address</th>
         </thead>
         <tbody>
             {{#each sessions}}
             <tr>
-                <td>{{this.sessionID}}</td>
                 <td>{{this.sessionDate}}</td>
-                <td>{{this.propertyID}}</td>
+                <td>{{this.address}}</td>
                 <td><button>Update</button></td>
                 <td><button>Delete</button></td>
             </tr>
