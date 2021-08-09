@@ -75,11 +75,11 @@ app.post('/properties', function(req, res){
 
 app.get('/CompletedLandscapingSessions', function(req, res){
     //var callbackCount = 0;
-    //var context = {};
+    var context = {};
     var mysql = req.app.get('mysql');
     getLandscapingSessions(res, mysql, context, complete);
     getProperties(res, mysql, context, complete);
-    res.render('/CompletedLandscapingSessions')
+    res.render('/CompletedLandscapingSessions', context);
     //function complete(){
         //callbackCount++;
         //if(callbackCount >= 2){
