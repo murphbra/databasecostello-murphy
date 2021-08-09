@@ -76,9 +76,9 @@ app.post('/properties', function(req, res){
 app.get('/CompletedLandscapingSessions', function(req, res){
     var callbackCount = 0;
     var context = {};
-    var mysql = req.app.get('db');
-    getLandscapingSessions(res, mysql, context, complete);
-    getProperties(res, mysql, context, complete);
+    var db = req.app.get('db');
+    getLandscapingSessions(res, db, context, complete);
+    getProperties(res, db, context, complete);
     function complete(){
         callbackCount++;
         if(callbackCount >= 2){
@@ -86,7 +86,7 @@ app.get('/CompletedLandscapingSessions', function(req, res){
         }
     }      
 });  
-
+/*
 app.post('/CompletedLandscapingSessions', function(req, res){
     var mysql = req.app.get('mysql');
     var sql = "INSERT INTO CompletedLandscapingSessions (sessionDate, propertyID) VALUES (?,?)";
@@ -100,7 +100,7 @@ app.post('/CompletedLandscapingSessions', function(req, res){
         }
     })
 })
-
+*/
 app.get('/PropertyOwners', function(req, res){
     let query1 = "SELECT * FROM PropertyOwners;"; 
 
