@@ -135,7 +135,17 @@ app.get('/PropertyOwned', function(req, res){
     db.pool.query(query1, function(error, rows, fields){
 
         res.render('PropertyOwned', {data: rows}); 
-    })                       
+    })   
+    
+    app.get('/PropertiesUpdate', function(req, res){
+        let query1 = "SELECT * FROM CrewLeaders;"; 
+    
+        db.pool.query(query1, function(error, rows, fields){
+    
+            res.render('CrewLeaders', {data: rows}); 
+        })                          
+        });  
+
     });  
 /*
     LISTENER

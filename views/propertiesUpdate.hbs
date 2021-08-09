@@ -20,28 +20,11 @@
 
     <br>
     <br>
-    Properties Page
+    Properties Update
     <br>
     <br>
 
-    <table style="border:solid">
-        <caption>Properties on file</caption>
-        <thead>
-            <th>Address:</th>
-        </thead>
-
-        <tbody>
-
-            {{#each data}}
-            <tr>
-                <td>{{this.propAddress}}</td>
-                <td><button onclick="location.href='/PropertiesUpdate" type="button">Update</button></td>
-                <td><button>Delete</button></td>
-            </tr>
-            {{/each}}
-
-        </tbody>
-    </table>
+   
     <br>
 
     <form id="addaddress" action="/properties" method="post">
