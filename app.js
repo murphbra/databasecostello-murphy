@@ -153,8 +153,8 @@ app.get('/CrewLeaders', function(req, res){
 
 app.post('/CrewLeaders', function(req, res){
     var mysql = req.app.get('mysql');
-    var sql = "INSERT INTO CrewLeaders (fname, lname, phoneNumber) VALUES (?,?,?)";
-    var inserts = [req.body.fname, req.body.lname, req.body.phoneNumber];
+    var sql = "INSERT INTO CrewLeaders (fname, lname, phoneNumber, propertyID) VALUES (?,?,?,?)";
+    var inserts = [req.body.fname, req.body.lname, req.body.phoneNumber, req.body.propertyID];
     sql = db.pool.query (sql, inserts, function(error, results, fields){
         if(error){
             res.write(JSON.stringify(error));
