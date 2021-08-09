@@ -87,7 +87,7 @@ app.get('/CompletedLandscapingSessions', function(req, res){
         }
     }      
 });  
-/*
+
 app.post('/CompletedLandscapingSessions', function(req, res){
     var mysql = req.app.get('mysql');
     var sql = "INSERT INTO CompletedLandscapingSessions (sessionDate, propertyID) VALUES (?,?)";
@@ -101,7 +101,7 @@ app.post('/CompletedLandscapingSessions', function(req, res){
         }
     })
 })
-*/
+
 app.get('/PropertyOwners', function(req, res){
     let query1 = "SELECT * FROM PropertyOwners;"; 
 
