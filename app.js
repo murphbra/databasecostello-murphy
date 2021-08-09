@@ -42,6 +42,16 @@ function getLandscapingSessions (res, context, complete){
     });
 }
 
+function getCrewLeaders (res, context, complete){
+    db.pool.query("SELECT fname, lname, phoneNumber, Properties.propAddress AS address FROM CrewLeaders JOIN Properties ON CrewLeaders.propertyID = Properties.propertyID;", function(error, results, fields){
+        if(error){
+            res.write(JSON.stringify(error));
+            res.end();
+        }
+        context.CrewLeaders = results;
+        complete();
+    });
+}
 /*
     ROUTES
 */
@@ -126,13 +136,20 @@ app.post('/PropertyOwners', function(req, res){
 })
 
 app.get('/CrewLeaders', function(req, res){
-    let query1 = "SELECT * FROM CrewLeaders;"; 
-
-    db.pool.query(query1, function(error, rows, fields){
-
-        res.render('CrewLeaders', {data: rows}); 
-    })                          
-    });  
+    var callbackCount = 0;
+    var context = {};
+    //var mysql = req.app.get('db');
+    getCrewLeaders(res, context, complete);
+    getProperties(res, context, complete);
+    //res.render('CompletedLandscapingSessions', context); 
+    function complete(){
+        callbackCount++;
+        if(callbackCount >= 2){
+            res.render('CrewLeaders', context); 
+        }
+    }      
+                   
+});  
 
 app.post('/CrewLeaders', function(req, res){
     var mysql = req.app.get('mysql');
