@@ -143,6 +143,20 @@ app.get('/propertiesUpdate/:propertyID', function(req, res){
             res.render('propertiesUpdate');
     });  
 
+    app.post('/propertiesUpdate/:propertyID', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "UPDATE Properties SET address = :addressInput;";
+        var inserts = [req.body.addressInput]
+        sql = db.pool.query (sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.redirect('properties');
+            }
+        })
+    })
+
 /*
     LISTENER
 */
