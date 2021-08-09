@@ -74,7 +74,7 @@ app.post('/properties', function(req, res){
 })
 
 app.get('/CompletedLandscapingSessions', function(req, res){
-    //var callbackCount = 0;
+    var callbackCount = 0;
     var context = {};
     //var mysql = req.app.get('db');
     getLandscapingSessions(res, context, complete);
