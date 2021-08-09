@@ -21,7 +21,7 @@ app.set('view engine', '.hbs');
     FUNCTIONS
 */
 function getProperties (res, db, context, complete){
-    db.pool.query("SELECT propertyID, propAddress FROM Properties", function(error, results, fields){
+    db.pool.query("SELECT propertyID, propAddress FROM Properties;", function(error, results, fields){
         if(error){
             res.write(JSON.stringify(error));
             res.end();
