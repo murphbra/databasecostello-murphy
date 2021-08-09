@@ -54,7 +54,7 @@ function getCrewLeaders (res, context, complete){
 }
 
 function getEmployees(res, context, complete){
-    db.pool.query("SELECT fname, lname, phoneNumber, CrewLeaders.fname AS leaderfirst, Crewleaders.lname AS leaderlast FROM Employees JOIN CrewLeaders ON Employees.leaderID = CrewLeaders.ID;", function(error, results, fields){
+    db.pool.query("SELECT Employees.fname, Employees.lname, Employees.phoneNumber, CrewLeaders.fname AS leaderfirst, Crewleaders.lname AS leaderlast FROM Employees JOIN CrewLeaders ON Employees.leaderID = CrewLeaders.ID;", function(error, results, fields){
         if(error){
             res.write(JSON.stringify(error));
             res.end();
@@ -188,9 +188,22 @@ app.get('/Employees', function(req, res){
         if(callbackCount >= 2){
             res.render('Employees', context); 
         }
-    }      
-                 
-    });  
+    }                 
+});  
+
+app.post('/Employees', function(req, res){
+    var mysql = req.app.get('mysql');
+    var sql = "INSERT INTO Employees (fname, lname, phoneNumber, leaderID) VALUES (?,?,?,?)";
+    var inserts = [req.body.fname, req.body.lname, req.body.phoneNumber, req.body.leaderID];
+    sql = db.pool.query (sql, inserts, function(error, results, fields){
+        if(error){
+            res.write(JSON.stringify(error));
+            res.end();
+        }else{
+            res.redirect('Employees');
+        }
+    })
+})
 
 app.get('/PropertyOwned', function(req, res){
     let query1 = "SELECT * FROM PropertyOwned;"; 
