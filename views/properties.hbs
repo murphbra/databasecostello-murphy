@@ -16,7 +16,6 @@
         <a href="/CrewLeaders">Crew Leaders</a>
         <a href="/Employees">Employees</a>
         <a href="/PropertyOwned">Properties and their Owners</a>
-         <a href="/propertiesUpdate">Property update</a>
     </div>
 
     <br>
@@ -36,7 +35,7 @@
             {{#each data}}
             <tr>
                 <td>{{this.propAddress}}</td>
-                <td><button class = ""><a href = "/propertiesUpdate">Update</a></button></td>
+                <td><button class = ""><a href = "/propertiesUpdate/{{this.propAddress}}">Update</a></button></td>
                 <td><button>Delete</button></td>
             </tr>
             {{/each}}
