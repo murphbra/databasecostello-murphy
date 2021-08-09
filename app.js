@@ -142,7 +142,7 @@ app.get('/propertiesUpdate', function(req, res){
     
         db.pool.query(query1, function(error, rows, fields){
     
-            res.render('CrewLeaders', {data: rows}); 
+            res.render('propertiesUpdate', {data: rows}); 
         })                          
         });  
 
