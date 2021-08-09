@@ -72,7 +72,7 @@ app.post('/properties', function(req, res){
         }
     })
 })
-
+/*
 app.get('/CompletedLandscapingSessions', function(req, res){
     var callbackCount = 0;
     var context = {};
@@ -100,7 +100,7 @@ app.post('/CompletedLandscapingSessions', function(req, res){
         }
     })
 })
-
+*/
 app.get('/PropertyOwners', function(req, res){
     let query1 = "SELECT * FROM PropertyOwners;"; 
 
