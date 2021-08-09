@@ -134,6 +134,20 @@ app.get('/CrewLeaders', function(req, res){
     })                          
     });  
 
+app.post('/CrewLeaders', function(req, res){
+    var mysql = req.app.get('mysql');
+    var sql = "INSERT INTO CrewLeaders (fname, lname, phoneNumber) VALUES (?,?,?)";
+    var inserts = [req.body.fname, req.body.lname, req.body.phoneNumber];
+    sql = db.pool.query (sql, inserts, function(error, results, fields){
+        if(error){
+            res.write(JSON.stringify(error));
+            res.end();
+        }else{
+            res.redirect('CrewLeaders');
+        }
+    })
+})
+
 app.get('/Employees', function(req, res){
     let query1 = "SELECT * FROM Employees;"; 
 
