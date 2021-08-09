@@ -136,14 +136,13 @@ app.get('/PropertyOwned', function(req, res){
 
         res.render('PropertyOwned', {data: rows}); 
     })   
+});
     
 app.get('/propertiesUpdate', function(req, res){
     
             res.render('propertiesUpdate');
-                                 
-        });  
-
     });  
+
 /*
     LISTENER
 */
