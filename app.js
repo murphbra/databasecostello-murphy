@@ -79,7 +79,7 @@ app.get('/CompletedLandscapingSessions', function(req, res){
     //var mysql = req.app.get('db');
     getLandscapingSessions(res, context, complete);
     getProperties(res, context, complete);
-    res.render('CompletedLandscapingSessions', context); 
+    //res.render('CompletedLandscapingSessions', context); 
     function complete(){
         callbackCount++;
         if(callbackCount >= 2){
