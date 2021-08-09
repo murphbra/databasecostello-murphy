@@ -74,17 +74,18 @@ app.post('/properties', function(req, res){
 })
 
 app.get('/CompletedLandscapingSessions', function(req, res){
-    var callbackCount = 0;
-    var context = {};
+    //var callbackCount = 0;
+    //var context = {};
     var mysql = req.app.get('mysql');
     getLandscapingSessions(res, mysql, context, complete);
     getProperties(res, mysql, context, complete);
-    function complete(){
-        callbackCount++;
-        if(callbackCount >= 2){
-            res.render('CompletedLandscapingSessions', context); 
-        }
-    }      
+    res.render('/CompletedLandscapingSessions')
+    //function complete(){
+        //callbackCount++;
+        //if(callbackCount >= 2){
+            //res.render('CompletedLandscapingSessions', context); 
+        //}
+    //}      
 });  
 /*
 app.post('/CompletedLandscapingSessions', function(req, res){
