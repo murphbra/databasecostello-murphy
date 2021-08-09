@@ -33,7 +33,7 @@
             <th>Property ID</th>
         </thead>
         <tbody>
-            {{#each sessions}}
+            {{#each context.sessions}}
             <tr>
                 <td>{{this.sessionID}}</td>
                 <td>{{this.sessionDate}}</td>
@@ -53,7 +53,7 @@
                 Date: <input type="date" name="sessionDate"><br>
 
                 Property: <select name="propertyID">
-                    {{#each properties}}
+                    {{#each context.properties}}
                     <option value="{{this.propertyID}}">{{this.propAddress}}</option>
                     {{/each}}
                 </select><br>
