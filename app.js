@@ -137,8 +137,8 @@ app.get('/PropertyOwned', function(req, res){
         res.render('PropertyOwned', {data: rows}); 
     })   
     
-    app.get('/PropertiesUpdate', function(req, res){
-        let query1 = "SELECT * FROM CrewLeaders;"; 
+app.get('/propertiesUpdate', function(req, res){
+    let query1 = "SELECT * FROM CrewLeaders;"; 
     
         db.pool.query(query1, function(error, rows, fields){
     
