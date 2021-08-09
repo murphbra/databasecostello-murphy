@@ -59,7 +59,7 @@ function getEmployees(res, context, complete){
             res.write(JSON.stringify(error));
             res.end();
         }
-        context.CrewLeaders = results;
+        context.employees = results;
         complete();
     });
 }
