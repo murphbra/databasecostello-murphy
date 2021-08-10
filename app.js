@@ -8,7 +8,7 @@ var app     = express();
 var db = require('./database/db-connector');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
-PORT        = 5470;
+PORT        = 5472;
 app.engine('.hbs', exphbs({                     
     extname: ".hbs"
 }));
