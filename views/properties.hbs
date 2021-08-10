@@ -5,13 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Properties</title>
-</head>
-<body>
-
     <script>
-        function deleteProperty(propertyID){
+        function deleteProperty(id){
             $.ajax({
-                url: '/properties/' + propertyID,
+                url: '/properties/' + id,
                 type: 'DELETE',
                 sucess: function(result){
                     window.location.reload(true);
@@ -19,6 +16,8 @@
             })
         };
     </script>
+</head>
+<body>
 
     <div class="navbar"> 
         <a href="/index">Home Page</a>
