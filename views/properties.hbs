@@ -11,7 +11,7 @@
     <script>
         function deleteProperty(propertyID){
             $.ajax({
-                url: '/properties/:' + propertyID,
+                url: '/properties/' + propertyID,
                 type: 'DELETE',
                 sucess: function(result){
                     window.location.reload(true);
