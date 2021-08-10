@@ -300,7 +300,7 @@ app.get('/propertiesUpdate/:propertyID', function(req, res){
         var context = {};
         context.jsscripts = ["updateProperties.js"];
         var mysql = req.app.get('mysql');
-        getPerson(res, mysql, context, req.params.propertyID, complete);
+        getProperty(res, mysql, context, req.params.propertyID, complete);
         //getPlanets(res, mysql, context, complete);
         function complete(){
             callbackCount++;
