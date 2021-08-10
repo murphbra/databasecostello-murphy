@@ -71,9 +71,32 @@
             <tr>
                 <td>{{this.propertyID}}</td>
                 <td>{{this.ownerID}}</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
             </tr>
             {{/each}}
         </tbody>
     </table>
+
+    <form id="addpropertyowned" action="/PropertyOwned" method="post">
+        <fieldset>
+            <legend>Manage Properties and their Owners</legend>
+
+            Property: <select name="propertyID">
+                    {{#each properties}}
+                    <option value="{{this.propertyID}}">{{this.propAddress}}</option>
+                    {{/each}}
+                </select><br>
+
+            Owner: <select name="ownerID">
+                    {{#each owners}}
+                    <option value="{{this.ownerID}}">{{this.fname}} {{this.lname}}</option>
+                    {{/each}}
+                </select><br>
+
+            <input type="submit" value="Submit" />
+
+        </fieldset>
+    </form>
 </body>
 </html>
