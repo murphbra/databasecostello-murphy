@@ -312,7 +312,7 @@ app.get('/propertiesUpdate/:propertyID', function(req, res){
     });
 
     function getProperty(res, mysql, context, id, complete){
-        var sql = "SELECT propertyID, propAddress FROM bsg_people WHERE id = ?";
+        var sql = "SELECT propertyID, propAddress FROM properties WHERE id = ?";
         var inserts = [id];
         db.pool.query(sql, inserts, function(error, results, fields){
             if(error){
@@ -320,7 +320,9 @@ app.get('/propertiesUpdate/:propertyID', function(req, res){
                 res.end();
             }
             console.log("get prop 1");
+            console.log(results);
             context.property = results[0];
+            console.log("get prop 1");
             complete();
         });
     }
