@@ -181,7 +181,7 @@ app.post('/CompletedLandscapingSessions/search', function(req, res){
     console.log(req.body, req.body.propertyIDSearch);
 
     var sql = "SELECT sessionID, propertyID, SessionDate FROM CompletedLandscapingSession WHERE sessionID = ?;";
-    var inserts = [req.body.propertyIDSearch];
+    var inserts = [req.body.propertyIdSearch];
     sql = db.pool.query (sql, inserts, function(error, results, fields){
         if(error){
             res.write(JSON.stringify(error));
