@@ -319,7 +319,7 @@ app.get('/propertiesUpdate/:propertyID', function(req, res){
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            log.console("get prop 1");
+            console.log("get prop 1");
             context.property = results[0];
             complete();
         });
