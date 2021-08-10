@@ -86,9 +86,9 @@ function getPropertyOwned (res, context, complete){
 
 function deleteProperties(propertyID, res){
     var sql = "DELETE FROM properties WHERE id = ?";
-    var inserts = [req.params.propertyID];
+    //var inserts = [req.params.propertyID];
     console.log(req.params.propertyID);
-    db.pool.query(sql, inserts, function(error, results, fields){
+    db.pool.query(sql, propertyID, function(error, results, fields){
         if(error){
             res.write(JSON.stringify(error));
             res.status(400);
