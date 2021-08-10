@@ -43,7 +43,7 @@ function getLandscapingSessions (res, context, complete){
 }
 
 function getCrewLeaders (res, context, complete){
-    db.pool.query("SELECT fname, lname, phoneNumber, Properties.propAddress AS address FROM CrewLeaders JOIN Properties ON CrewLeaders.propertyID = Properties.propertyID;", function(error, results, fields){
+    db.pool.query("SELECT fname, lname, phoneNumber, leaderID, Properties.propAddress AS address FROM CrewLeaders JOIN Properties ON CrewLeaders.propertyID = Properties.propertyID;", function(error, results, fields){
         if(error){
             res.write(JSON.stringify(error));
             res.end();
