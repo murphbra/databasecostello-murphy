@@ -39,8 +39,9 @@
             {{/each}}
 
         </tbody>
-
     </table>
+    <br>
+    <br>
 
     <table style="border:solid">
         <caption>Property Owners on file</caption>
@@ -52,13 +53,12 @@
         {{#each owners}}
         <tr>
             <td>{{this.fname}} {{this.lname}}</td>
-        </tr>
-        <tr>
             <td>{{this.email}}</td>
         </tr>
         {{/each}}
     </tbody>
     </table>
+    <br><br>
 
     <table style="border:solid">
         <caption>Owners and their Properties</caption>
@@ -70,11 +70,6 @@
             {{#each propertyowned}}
             <tr>
                 <td>{{this.propertyID}}</td>
-            </tr>
-            {{/each}}
-
-            {{#each propertyowned}}
-            <tr>
                 <td>{{this.ownerID}}</td>
             </tr>
             {{/each}}
