@@ -193,6 +193,10 @@ app.post('/CompletedLandscapingSessions/search', function(req, res){
     })
 })
 
+app.get('/CompletedLandscapingSessions/search', function(req, res){
+    res.render('/sessionSearch');
+});
+
 
 app.get('/PropertyOwners', function(req, res){
     let query1 = "SELECT * FROM PropertyOwners;"; 

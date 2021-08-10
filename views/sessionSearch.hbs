@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed Landscaping Sessions</title>
+</head>
+<body>
+
+    <div class="navbar"> 
+        <a href="/index">Home Page</a>
+        <a href="/properties">Properties</a>
+        <a href="/CompletedLandscapingSessions">Completed Landscaping Work</a>
+        <a href="/PropertyOwners">Property Owners</a>
+        <a href="/CrewLeaders">Crew Leaders</a>
+        <a href="/Employees">Employees</a>
+        <a href="/PropertyOwned">Properties and their Owners</a>
+    </div>
+    
+    <br>
+    <br>
+    Completed Landscaping Work Page
+    <br>
+    <br>
+    <table style="border:solid">
+        <caption>
+            Completed Landscaping Sessions on file
+        </caption>
+        <thead>
+            <th>Session Date</th>
+            <th>Property Address</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{this.sessionDate}}</td>
+                <td>{{this.address}}</td>
+            </tr>
+        </tbody>
+        
+    
+    <br>
+    <form id ="searchSession" action="/CompletedLandscapingSessions/search" method = "post">
+        <fieldset>
+            <legend>Search for Completed Landscaping Session by Property ID</legend>
+            <label for = "propertyIdSearch"> Property ID: </label>
+            <input type = "number" id = "propertyIdSearch" name= "propertyIdSearch"><br>
+            <input type = "submit" value = "Submit">
+        </fieldset>
+    </form>
+
+</body>
+</html>
