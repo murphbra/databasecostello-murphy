@@ -178,7 +178,8 @@ app.post('/CompletedLandscapingSessions', function(req, res){
 
 app.post('/CompletedLandscapingSessions/search', function(req, res){
     var mysql = req.app.get('mysql');
-    var sql = "SELECT sessionID, propertyID, date FROM CompletedLandscapingSession WHERE sessionID = ?;"
+    console.log(req.body, req.params);
+    var sql = "SELECT sessionID, propertyID, SessionDate FROM CompletedLandscapingSession WHERE sessionID = ?;"
     ;
     var inserts = [req.body.propertyIDSearch];
     sql = db.pool.query (sql, inserts, function(error, results, fields){
