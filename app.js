@@ -305,6 +305,7 @@ app.get('/propertiesUpdate/:propertyID', function(req, res){
         console.log("got past getproperty")
         function complete(){
             callbackCount++;
+            console.log(callbackCount);
             if(callbackCount >= 2){
                 res.render('propertiesUpdate', context);
             }
