@@ -178,7 +178,7 @@ app.post('/CompletedLandscapingSessions', function(req, res){
 
 app.post('/CompletedLandscapingSessions/search', function(req, res){
     var mysql = req.app.get('mysql');
-    console.log(req.body, req.body.propertyIDSearch);
+    //console.log(req.body, req.body.propertyIDSearch);
 
     var sql = "SELECT sessionID, propertyID, SessionDate FROM CompletedLandscapingSessions WHERE sessionID = ?;";
     var inserts = [req.body.propertyIdSearch];
@@ -188,7 +188,7 @@ app.post('/CompletedLandscapingSessions/search', function(req, res){
             res.end();
         }else{
             console.log(results);
-            res.redirect('CompletedLandscapingSessions');
+            res.redirect('/CompletedLandscapingSessions/search');
         }
     })
 })
