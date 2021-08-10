@@ -7,9 +7,9 @@
     <title>Properties</title>
 </head>
     <script>
-        function deleteProperty(id){
+        function deleteProperty(propertyID){
             $.ajax({
-                url: '/properties/' + id,
+                url: '/properties/' + propertyID,
                 type: 'DELETE',
                 sucess: function(result){
                     window.location.reload(true);
