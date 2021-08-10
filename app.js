@@ -240,8 +240,21 @@ app.get('/PropertyOwned', function(req, res){
             res.render('PropertyOwned', context); 
         }
     }          
-
     });  
+
+app.post('/PropertyOwned', function(req, res){
+    var mysql = req.app.get('mysql');
+    var sql = "INSERT INTO PropertyOwned (propertyID, ownerID) VALUES (?,?)";
+    var inserts = [req.body.propertyID, req.body.ownerID];
+    sql = db.pool.query (sql, inserts, function(error, results, fields){
+        if(error){
+            res.write(JSON.stringify(error));
+            res.end();
+        }else{
+            res.redirect('PropertyOwned');
+        }
+    })
+})
 /*
     LISTENER
 */
