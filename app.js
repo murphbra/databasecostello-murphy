@@ -54,7 +54,7 @@ function getCrewLeaders (res, context, complete){
 }
 
 function getEmployees(res, context, complete){
-    db.pool.query("SELECT Employees.fname, Employees.lname, Employees.phoneNumber, CrewLeaders.fname AS leaderfirst, Crewleaders.lname AS leaderlast FROM Employees JOIN CrewLeaders ON Employees.leaderID = CrewLeaders.ID;", function(error, results, fields){
+    db.pool.query("SELECT Employees.fname, Employees.lname, Employees.phoneNumber, CrewLeaders.fname AS leaderfirst, Crewleaders.lname AS leaderlast FROM Employees JOIN CrewLeaders ON Employees.leaderID = CrewLeaders.leaderID;", function(error, results, fields){
         if(error){
             res.write(JSON.stringify(error));
             res.end();
