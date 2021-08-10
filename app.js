@@ -115,7 +115,7 @@ app.post('/properties', function(req, res){
     })
 })
 
-app.delete('properties/:id',function(req, res){
+app.delete('/properties/:id',function(req, res){
     var sql = "DELETE from Properties WHERE PropertyID = ?";
     var inserts = [req.params.id];
     sql = db.pool.query(sql, inserts, function(error, results, fields){
