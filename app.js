@@ -95,7 +95,8 @@ function deleteProperties(propertyID, res){
             res.end();
         }
         //complete();
-        res.redirect('properties');
+        //res.redirect('properties');
+        res.end();
     })
 }
 
