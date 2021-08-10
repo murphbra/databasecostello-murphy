@@ -314,7 +314,7 @@ app.get('/propertiesUpdate/:propertyID', function(req, res){
     function getProperty(res, mysql, context, id, complete){
         var sql = "SELECT propertyID, propAddress FROM bsg_people WHERE id = ?";
         var inserts = [id];
-        mysql.pool.query(sql, inserts, function(error, results, fields){
+        db.pool.query(sql, inserts, function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
