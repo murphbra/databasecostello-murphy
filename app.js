@@ -146,6 +146,22 @@ app.get('/CompletedLandscapingSessions', function(req, res){
     }      
 });  
 
+app.get('/CompletedLandscapingSessions/search', function(req, res){
+    var callbackCount = 0;
+    var context = {};
+    //var mysql = req.app.get('db');
+    getLandscapingSessions(res, context, complete);
+    getProperties(res, context, complete);
+    //res.render('CompletedLandscapingSessions', context); 
+    function complete(){
+        callbackCount++;
+        if(callbackCount >= 2){
+            res.render('CompletedLandscapingSessions', context); 
+        }
+    }      
+});  
+
+
 app.post('/CompletedLandscapingSessions', function(req, res){
     var mysql = req.app.get('mysql');
     var sql = "INSERT INTO CompletedLandscapingSessions (sessionDate, propertyID) VALUES (?,?)";
@@ -159,6 +175,23 @@ app.post('/CompletedLandscapingSessions', function(req, res){
         }
     })
 })
+
+app.post('/CompletedLandscapingSessions/search', function(req, res){
+    var mysql = req.app.get('mysql');
+    var sql = "SELECT sessionID, propertyID, date FROM CompletedLandscapingSession WHERE sessionID = ?;"
+    ;
+    var inserts = [req.body.propertyIDSearch];
+    sql = db.pool.query (sql, inserts, function(error, results, fields){
+        if(error){
+            res.write(JSON.stringify(error));
+            res.end();
+        }else{
+            console.log(results);
+            res.redirect('CompletedLandscapingSessions');
+        }
+    })
+})
+
 
 app.get('/PropertyOwners', function(req, res){
     let query1 = "SELECT * FROM PropertyOwners;"; 
@@ -292,6 +325,7 @@ app.post('/propertiesUpdate/:propertyID', function(req, res){
         }
     })
 })
+
 
 /*
     LISTENER
