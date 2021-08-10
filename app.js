@@ -9,11 +9,9 @@ var db = require('./database/db-connector');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 PORT        = 5467;
-
 app.engine('.hbs', exphbs({                     
     extname: ".hbs"
 }));
-
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine', '.hbs'); 
 
@@ -27,6 +25,17 @@ function getProperties (res, context, complete){
             res.end();
         }
         context.properties = results;
+        complete();
+    });
+}
+
+function getOwners (res, context, complete){
+    db.pool.query("SELECT ownerID, fname, lname, email FROM PropertyOwners;", function(error, results, fields){
+        if(error){
+            res.write(JSON.stringify(error));
+            res.end();
+        }
+        context.owners = results;
         complete();
     });
 }
@@ -63,6 +72,18 @@ function getEmployees(res, context, complete){
         complete();
     });
 }
+
+function getPropertyOwned (res, context, complete){
+    db.pool.query("SELECT propertyID, ownerID FROM PropertyOwned;", function(error, results, fields){
+        if(error){
+            res.write(JSON.stringify(error));
+            res.end();
+        }
+        context.propertyowned = results;
+        complete();
+    });
+}
+
 /*
     ROUTES
 */
@@ -206,12 +227,20 @@ app.post('/Employees', function(req, res){
 })
 
 app.get('/PropertyOwned', function(req, res){
-    let query1 = "SELECT * FROM PropertyOwned;"; 
+    var callbackCount = 0;
+    var context = {};
+    //var mysql = req.app.get('db');
+    getProperties(res, context, complete);
+    getOwners(res, context, complete);
+    getPropertyOwned(res, context, complete);
+    //res.render('CompletedLandscapingSessions', context); 
+    function complete(){
+        callbackCount++;
+        if(callbackCount >= 3){
+            res.render('PropertyOwned', context); 
+        }
+    }          
 
-    db.pool.query(query1, function(error, rows, fields){
-
-        res.render('PropertyOwned', {data: rows}); 
-    })                       
     });  
 /*
     LISTENER

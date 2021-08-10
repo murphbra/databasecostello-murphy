@@ -23,25 +23,62 @@
     PropertyOwned Page - Manage Properties and their Owners
     <br>
     <br>
+
     <table style="border:solid">
-        <caption>
-            Properties Owned On File
-        </caption>
+        <caption>Properties on file</caption>
         <thead>
-            <th>Property ID</th>
-            <th>Owner ID</th>
+            <th>Address:</th>
+        </thead>
+
+        <tbody>
+
+            {{#each properties}}
+            <tr>
+                <td>{{this.propAddress}}</td>
+            </tr>
+            {{/each}}
+
+        </tbody>
+
+    </table>
+
+    <table style="border:solid">
+        <caption>Property Owners on file</caption>
+    <thead>
+       <th>Name</th> 
+       <th>Email</th>
+    </thead>
+    <tbody>
+        {{#each owners}}
+        <tr>
+            <td>{{this.fname}} {{this.lname}}</td>
+        </tr>
+        <tr>
+            <td>{{this.email}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+    </table>
+
+    <table style="border:solid">
+        <caption>Owners and their Properties</caption>
+        <thead>
+            <th>Property</th>
+            <th>Owner</th>
         </thead>
         <tbody>
-            {{#each data}}
+            {{#each propertyowned}}
             <tr>
                 <td>{{this.propertyID}}</td>
+            </tr>
+            {{/each}}
+
+            {{#each propertyowned}}
+            <tr>
                 <td>{{this.ownerID}}</td>
-                <td><button>Update</button></td>
-                <td><button>Delete</button></td>
             </tr>
             {{/each}}
         </tbody>
-        
     </table>
 </body>
 </html>
