@@ -282,7 +282,7 @@ app.post('/propertiesUpdate/:propertyID', function(req, res){
     var mysql = req.app.get('mysql');
     var sql = "UPDATE Properties SET propAddress = ? WHERE propertyID = ?;";
     var inserts = [req.body.addressInput, req.params.propertyID]
-    console.log(req);
+    console.log(req.params);
     sql = db.pool.query (sql, inserts, function(error, results, fields){
         if(error){
             res.write(JSON.stringify(error));
