@@ -69,14 +69,15 @@
         <tbody>
             {{#each propertyowned}}
             <tr>
-                <td>{{this.propertyID}}</td>
-                <td>{{this.ownerID}}</td>
+                <td>{{this.address}}</td>
+                <td>{{this.ownerfirst}} {{this.ownerlast}}</td>
                 <td><button>Update</button></td>
                 <td><button>Delete</button></td>
             </tr>
             {{/each}}
         </tbody>
     </table>
+    <br><br>
 
     <form id="addpropertyowned" action="/PropertyOwned" method="post">
         <fieldset>
@@ -95,7 +96,6 @@
                 </select><br>
 
             <input type="submit" value="Submit" />
-
         </fieldset>
     </form>
 </body>
