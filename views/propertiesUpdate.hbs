@@ -3,4 +3,5 @@
 <form id="propertiesUpdate" action="/properties" method="post">
     Address: <input type="text" name="address" value="{{property.propAddress}}"><br>
 </form>
-<button onclick="updateProperties({{property.propertyID}})">Update</button>
+
+<td> <button class=""> <a href="/propertiesUpdate/{{property.propAddress}}"> Update </a> </button> </td>

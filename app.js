@@ -330,7 +330,7 @@ app.get('/propertiesUpdate/:propertyID', function(req, res){
         });
     }
 
-    app.put('/propertiesUpdate/:propertyID', function(req, res){
+    app.post('/propertiesUpdate/:propertyID', function(req, res){
         console.log("got to propertyupdate");
         var mysql = req.app.get('mysql');
         var sql = "UPDATE properties SET propAddress=? WHERE id=?";
