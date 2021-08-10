@@ -1,38 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Properties</title>
-</head>
-<body>
-
-    <div class="navbar"> 
-        <a href="/index">Home Page</a>
-        <a href="/properties">Properties</a>
-        <a href="/CompletedLandscapingSessions">Completed Landscaping Work</a>
-        <a href="/PropertyOwners">Property Owners</a>
-        <a href="/CrewLeaders">Crew Leaders</a>
-        <a href="/Employees">Employees</a>
-        <a href="/PropertyOwned">Properties and their Owners</a>
-    </div>
-
-    <br>
-    <br>
-    Properties Update
-    <br>
-    <br>
-
-    <form id="updateaddress" action="/propertiesUpdate/:propertyID" method="post">
-        <fieldset>
-            <legend>Update Property</legend>
-            <label>
-                Address: <input type="text" name="addressInput">
-                <input type="submit" value="Submit" />
-            </label>
-        </fieldset>
-    </form>
-
-</body>
-</html>
+  
+<h1>Update {{property.propAddress}}:</h1>
+<form id="propertiesUpdate" action="/properties" method="post">
+    Address: <input type="text" name="address" value="{{property.propAddress}}"><br>
+</form>
+<button onclick="updateProperties({{property.propertyID}})">Update</button>

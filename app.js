@@ -271,7 +271,7 @@ app.post('/PropertyOwned', function(req, res){
     })
 })
 
-    
+    /*
 app.get('/propertiesUpdate/:propertyID', function(req, res){
         
         res.render('propertiesUpdate');
@@ -292,6 +292,43 @@ app.post('/propertiesUpdate/:propertyID', function(req, res){
         }
     })
 })
+
+*/
+app.get('/propertiesUpdate/:propertyID', function(req, res){
+        
+    callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["updateProperties.js"];
+        var mysql = req.app.get('mysql');
+        getPerson(res, mysql, context, req.params.propertyID, complete);
+        //getPlanets(res, mysql, context, complete);
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 2){
+                res.render('propertiesUpdate', context);
+            }
+
+        }
+    });
+
+    function getProperty(res, mysql, context, id, complete){
+        var sql = "SELECT propertyID, propAddress FROM bsg_people WHERE id = ?";
+        var inserts = [id];
+        mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.property = results[0];
+            complete();
+        });
+    }
+
+
+
+
+
+
 
 app.get('/properties/delete/:propertyID', function(req, res) {
 	console.log("checkpoint 1\n");
