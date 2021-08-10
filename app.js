@@ -339,9 +339,8 @@ app.get('/propertiesUpdate/:propertyID', function(req, res){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
-            }else{
-                res.redirect('/properties');
             }
+            res.redirect('/properties');
         });
     });
 
