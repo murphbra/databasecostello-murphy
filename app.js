@@ -273,7 +273,7 @@ app.post('/PropertyOwned', function(req, res){
 
     
 app.get('/propertiesUpdate/:propertyID', function(req, res){
-    
+        console.log(req.body, req.params, req.params.propertyID);
             res.render('propertiesUpdate');
     });  
 
