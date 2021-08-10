@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Properties</title>
 </head>
+<body>
+
     <script>
         function deleteProperty(propertyID){
             $.ajax({
-                url: '/properties/' + propertyID,
+                url: '/properties/:' + propertyID,
                 type: 'DELETE',
                 sucess: function(result){
                     window.location.reload(true);
@@ -17,7 +19,6 @@
             })
         };
     </script>
-<body>
 
     <div class="navbar"> 
         <a href="/index">Home Page</a>
