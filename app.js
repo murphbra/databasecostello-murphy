@@ -302,6 +302,7 @@ app.get('/propertiesUpdate/:propertyID', function(req, res){
         var mysql = req.app.get('mysql');
         getProperty(res, mysql, context, req.params.propertyID, complete);
         //getPlanets(res, mysql, context, complete);
+        console.log("got past getproperty")
         function complete(){
             callbackCount++;
             if(callbackCount >= 2){
@@ -312,9 +313,9 @@ app.get('/propertiesUpdate/:propertyID', function(req, res){
     });
 
     function getProperty(res, mysql, context, id, complete){
-        //var sql = "SELECT propAddress FROM Properties WHERE id = ?;";
+        var sql = "SELECT propAddress FROM Properties WHERE id = 1;";
         //var inserts = [id];
-        var sql = "SELECT * FROM Properties;";
+        //var sql = "SELECT * FROM Properties;";
         db.pool.query(sql, function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
@@ -323,7 +324,7 @@ app.get('/propertiesUpdate/:propertyID', function(req, res){
             console.log("get prop 1");
             console.log(results);
             context.property = results[0];
-            console.log("get prop 1");
+            console.log("get prop 2");
             complete();
         });
     }
