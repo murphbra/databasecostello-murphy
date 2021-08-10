@@ -19,6 +19,8 @@ app.set('view engine', '.hbs');
 /*
     FUNCTIONS
 */
+
+//selects attributes from Properties table to be displayed
 function getProperties (res, context, complete){
     db.pool.query("SELECT propertyID, propAddress FROM Properties;", function(error, results, fields){
         if(error){
@@ -30,6 +32,9 @@ function getProperties (res, context, complete){
     });
 }
 
+
+
+//selects attributes from property owners table to be displayed
 function getOwners (res, context, complete){
     db.pool.query("SELECT ownerID, fname, lname, email FROM PropertyOwners;", function(error, results, fields){
         if(error){
@@ -41,6 +46,9 @@ function getOwners (res, context, complete){
     });
 }
 
+
+
+//selects attributes from landscaping session table to be displayed
 function getLandscapingSessions (res, context, complete){
     db.pool.query("SELECT sessionID, sessionDate, Properties.propAddress AS address FROM CompletedLandscapingSessions JOIN Properties ON CompletedLandscapingSessions.propertyID = Properties.propertyID;", function(error, results, fields){
         if(error){
@@ -52,6 +60,9 @@ function getLandscapingSessions (res, context, complete){
     });
 }
 
+
+
+//selects attributes from crew leaders table to be displayed
 function getCrewLeaders (res, context, complete){
     db.pool.query("SELECT fname, lname, phoneNumber, leaderID, Properties.propAddress AS address FROM CrewLeaders JOIN Properties ON CrewLeaders.propertyID = Properties.propertyID;", function(error, results, fields){
         if(error){
@@ -63,6 +74,8 @@ function getCrewLeaders (res, context, complete){
     });
 }
 
+
+//selects attributes from employees table to be displayed
 function getEmployees(res, context, complete){
     db.pool.query("SELECT Employees.fname, Employees.lname, Employees.phoneNumber, CrewLeaders.fname AS leaderfirst, CrewLeaders.lname AS leaderlast FROM Employees JOIN CrewLeaders ON Employees.leaderID = CrewLeaders.leaderID;", function(error, results, fields){
         if(error){
@@ -74,6 +87,8 @@ function getEmployees(res, context, complete){
     });
 }
 
+
+//selects attributes from Property owned table to be displayed
 function getPropertyOwned (res, context, complete){
     db.pool.query("SELECT PropertyOwned.propertyID, PropertyOwned.ownerID, Properties.propAddress AS address, PropertyOwners.fname AS ownerfirst, PropertyOwners.lname AS ownerlast FROM PropertyOwned JOIN Properties ON PropertyOwned.propertyID = Properties.propertyID JOIN PropertyOwners ON PropertyOwned.ownerID = PropertyOwners.ownerID;", function(error, results, fields){
         if(error){
@@ -88,11 +103,14 @@ function getPropertyOwned (res, context, complete){
 /*
     ROUTES
 */
+
+//main page
 app.get('/index', function(req, res)
     {
         res.render('index')                
     });      
 
+    //displayes properties
 app.get('/properties', function(req, res){
     let query1 = "SELECT * FROM Properties;"; 
 
@@ -102,6 +120,7 @@ app.get('/properties', function(req, res){
         })                        
     });  
 
+    //allows adding new property
 app.post('/properties', function(req, res){
     var mysql = req.app.get('mysql');
     var sql = "INSERT INTO Properties (propAddress) VALUES (?)";
@@ -116,6 +135,7 @@ app.post('/properties', function(req, res){
     })
 })
 
+//allows deleting property
 app.delete('/properties/:id',function(req, res){
     var mysql = req.app.get('mysql');
     var sql = "DELETE from Properties WHERE propertyID=?";
@@ -131,6 +151,7 @@ app.delete('/properties/:id',function(req, res){
     })
 }); 
 
+//displayes completed landscaping sessions
 app.get('/CompletedLandscapingSessions', function(req, res){
     var callbackCount = 0;
     var context = {};
@@ -146,6 +167,8 @@ app.get('/CompletedLandscapingSessions', function(req, res){
     }      
 });  
 
+
+//allows adding completed landscaping sessions
 app.post('/CompletedLandscapingSessions', function(req, res){
     var mysql = req.app.get('mysql');
     var sql = "INSERT INTO CompletedLandscapingSessions (sessionDate, propertyID) VALUES (?,?)";
@@ -160,6 +183,8 @@ app.post('/CompletedLandscapingSessions', function(req, res){
     })
 })
 
+
+//displayes property owners
 app.get('/PropertyOwners', function(req, res){
     let query1 = "SELECT * FROM PropertyOwners;"; 
 
@@ -169,6 +194,7 @@ app.get('/PropertyOwners', function(req, res){
     })                    
     });  
 
+    //allows adding new property owner
 app.post('/PropertyOwners', function(req, res){
     var mysql = req.app.get('mysql');
     var sql = "INSERT INTO PropertyOwners (fname, lname, email) VALUES (?,?,?)";
@@ -183,6 +209,7 @@ app.post('/PropertyOwners', function(req, res){
     })
 })
 
+//displays crew leaders
 app.get('/CrewLeaders', function(req, res){
     var callbackCount = 0;
     var context = {};
@@ -199,6 +226,7 @@ app.get('/CrewLeaders', function(req, res){
                    
 });  
 
+//allows adding crew leaders
 app.post('/CrewLeaders', function(req, res){
     var mysql = req.app.get('mysql');
     var sql = "INSERT INTO CrewLeaders (fname, lname, phoneNumber, propertyID) VALUES (?,?,?,?)";
@@ -213,6 +241,7 @@ app.post('/CrewLeaders', function(req, res){
     })
 })
 
+//displays employees
 app.get('/Employees', function(req, res){
     var callbackCount = 0;
     var context = {};
@@ -228,6 +257,7 @@ app.get('/Employees', function(req, res){
     }                 
 });  
 
+//allows adding new employees
 app.post('/Employees', function(req, res){
     var mysql = req.app.get('mysql');
     var sql = "INSERT INTO Employees (fname, lname, phoneNumber, leaderID) VALUES (?,?,?,?)";
@@ -242,6 +272,7 @@ app.post('/Employees', function(req, res){
     })
 })
 
+//displayes property owned
 app.get('/PropertyOwned', function(req, res){
     var callbackCount = 0;
     var context = {};
@@ -258,6 +289,7 @@ app.get('/PropertyOwned', function(req, res){
     }          
     });  
 
+    //allows adding new property owned
 app.post('/PropertyOwned', function(req, res){
     var mysql = req.app.get('mysql');
     var sql = "INSERT INTO PropertyOwned (propertyID, ownerID) VALUES (?,?)";
@@ -272,12 +304,13 @@ app.post('/PropertyOwned', function(req, res){
     })
 })
 
-    
+    //displays page for updating properties
 app.get('/propertiesUpdate/:propertyID', function(req, res){
     
             res.render('propertiesUpdate');
     });  
 
+    //allows updating properties
 app.post('/propertiesUpdate/:propertyID', function(req, res){
     var mysql = req.app.get('mysql');
     var sql = "UPDATE Properties SET propAddress = ? WHERE propertyID = ?;";
