@@ -340,8 +340,7 @@ app.get('/propertiesUpdate/:propertyID', function(req, res){
                 res.write(JSON.stringify(error));
                 res.end();
             }else{
-                res.status(200);
-                res.end();
+                res.redirect('/properties');
             }
         });
     });
