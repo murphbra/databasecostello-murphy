@@ -74,7 +74,7 @@ function getEmployees(res, context, complete){
 }
 
 function getPropertyOwned (res, context, complete){
-    db.pool.query("SELECT propertyID, ownerID, Properties.propAddress AS address, PropertyOwners.fname AS ownerfirst, PropertyOwners.lname AS ownerlast FROM PropertyOwned JOIN Properties ON PropertyOwned.propertyID = Properties.propertyID JOIN PropertyOwners ON PropertyOwned.ownerID = PropertyOwners.ownerID;", function(error, results, fields){
+    db.pool.query("SELECT PropertyOwned.propertyID, PropertyOwned.ownerID, Properties.propAddress AS address, PropertyOwners.fname AS ownerfirst, PropertyOwners.lname AS ownerlast FROM PropertyOwned JOIN Properties ON PropertyOwned.propertyID = Properties.propertyID JOIN PropertyOwners ON PropertyOwned.ownerID = PropertyOwners.ownerID;", function(error, results, fields){
         if(error){
             res.write(JSON.stringify(error));
             res.end();
