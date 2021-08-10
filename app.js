@@ -129,7 +129,7 @@ app.delete('/properties/:id',function(req, res){
             res.status(202).end()
         }
     })
-} )
+}); 
 
 app.get('/CompletedLandscapingSessions', function(req, res){
     var callbackCount = 0;
