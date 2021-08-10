@@ -84,6 +84,19 @@ function getPropertyOwned (res, context, complete){
     });
 }
 
+function deleteProperties(propertyID, res){
+    var sql = "DELETE FROM properties WHERE id = ?";
+    var inserts = [req.params.propertyID];
+    db.pool.query(sql, inserts, function(error, results, fields){
+        if(error){
+            res.write(JSON.stringify(error));
+            res.status(400);
+            res.end();
+        }
+        complete();
+    })
+}
+
 /*
     ROUTES
 */
@@ -276,6 +289,11 @@ app.post('/propertiesUpdate/:propertyID', function(req, res){
         }
     })
 })
+
+app.get('/properties/delete/:propertyID', function(req, res) {
+	deleteProperties(req.params.id, res);
+	res.redirect('/character');
+});
 
 /*
     LISTENER
