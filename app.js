@@ -292,7 +292,7 @@ app.post('/propertiesUpdate/:propertyID', function(req, res){
 })
 
 app.get('/properties/delete/:propertyID', function(req, res) {
-	
+	console.log("checkpoint 1\n");
     deleteProperties(req.params.id, res);
 	res.redirect('/properties');
 });
