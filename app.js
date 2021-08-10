@@ -91,7 +91,6 @@ function deleteProperties(propertyID, res){
     db.pool.query(sql, propertyID, function(error, results, fields){
         if(error){
             res.write(JSON.stringify(error));
-            res.status(400);
             res.end();
         }
         //complete();
