@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Properties</title>
 </head>
+    <script>
+        function deleteProperty(id){
+            $.ajax({
+                url: '/properties/' + id,
+                type: 'DELETE',
+                sucess: function(result){
+                    window.location.reload(true);
+                }
+            })
+        };
+    </script>
 <body>
 
     <div class="navbar"> 
@@ -36,7 +47,7 @@
             <tr>
                 <td>{{this.propAddress}}</td>
                 <td><button class = ""><a href = "/propertiesUpdate/{{this.propAddress}}">Update</a></button></td>
-                <td><button>Delete</button></td>
+                <td><button onclick="deleteProperty({{this.propertyID}})">Delete</button></td>
             </tr>
             {{/each}}
 
