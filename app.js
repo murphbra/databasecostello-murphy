@@ -317,7 +317,7 @@ app.get('/propertiesUpdate/:propertyID', function(req, res){
         //var sql = "SELECT propAddress FROM Properties WHERE id = 1;";
         var inserts = [id];
         var sql = "SELECT propAddress FROM Properties WHERE propertyID = ?;";
-        db.pool.query(sql, function(error, results, fields){
+        db.pool.query(sql,inserts, function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
