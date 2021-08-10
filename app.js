@@ -4,6 +4,7 @@
     SETUP
 */
 var express = require('express');   
+var router = express.Router(); 
 var app     = express();          
 var db = require('./database/db-connector');
 var exphbs = require('express-handlebars');
@@ -115,7 +116,7 @@ app.post('/properties', function(req, res){
     })
 })
 
-app.delete('/properties/:propertyID',function(req, res){
+router.delete('/properties/:propertyID',function(req, res){
     var sql = "DELETE from Properties WHERE propertyID = ?";
     var inserts = [req.params.propertyID];
     sql = db.pool.query(sql, inserts, function(error, results, fields){
