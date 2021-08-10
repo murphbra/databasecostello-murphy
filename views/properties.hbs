@@ -9,14 +9,14 @@
 
         function deleteProperty(id){
             $.ajax({
-                url: '/properties/' + id,
+                url: '/' + id,
                 type: 'DELETE',
                 sucess: function(result){
                     window.location.reload(true);
                 }
             })
         };
-        
+
     </script>
 </head>
 <body>
