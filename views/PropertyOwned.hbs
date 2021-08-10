@@ -39,8 +39,9 @@
             {{/each}}
 
         </tbody>
-
     </table>
+    <br>
+    <br>
 
     <table style="border:solid">
         <caption>Property Owners on file</caption>
@@ -52,13 +53,12 @@
         {{#each owners}}
         <tr>
             <td>{{this.fname}} {{this.lname}}</td>
-        </tr>
-        <tr>
             <td>{{this.email}}</td>
         </tr>
         {{/each}}
     </tbody>
     </table>
+    <br><br>
 
     <table style="border:solid">
         <caption>Owners and their Properties</caption>
@@ -70,15 +70,33 @@
             {{#each propertyowned}}
             <tr>
                 <td>{{this.propertyID}}</td>
-            </tr>
-            {{/each}}
-
-            {{#each propertyowned}}
-            <tr>
                 <td>{{this.ownerID}}</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
             </tr>
             {{/each}}
         </tbody>
     </table>
+
+    <form id="addpropertyowned" action="/PropertyOwned" method="post">
+        <fieldset>
+            <legend>Manage Properties and their Owners</legend>
+
+            Property: <select name="propertyID">
+                    {{#each properties}}
+                    <option value="{{this.propertyID}}">{{this.propAddress}}</option>
+                    {{/each}}
+                </select><br>
+
+            Owner: <select name="ownerID">
+                    {{#each owners}}
+                    <option value="{{this.ownerID}}">{{this.fname}} {{this.lname}}</option>
+                    {{/each}}
+                </select><br>
+
+            <input type="submit" value="Submit" />
+
+        </fieldset>
+    </form>
 </body>
 </html>
